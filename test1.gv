@@ -1,0 +1,25 @@
+digraph Test {
+  node [shape="box"];
+  rankdir = LR;
+  subgraph cluster0 {
+    label = "Producer";
+    color=black;
+    rank=same;
+    rankdir=TD;
+    P1;
+    P2;
+    P3;
+  }
+
+  subgraph cluster1 {
+    label="Consumer";
+    color=blue;
+    C1;
+    C2;
+  }
+
+
+  P1 -> C1;
+  P2 -> C2;
+  P3 -> C1;
+}
