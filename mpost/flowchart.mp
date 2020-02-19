@@ -16,6 +16,15 @@ def diadpath_(suffix $) =
   $.e -- $.n -- $.w -- $.s -- cycle
 enddef;
 
+vardef drawshadowed(text t) =
+  fixsize(t);
+  forsuffixes s=t:
+    fill bpath.s shifted (1pt,-1pt);
+    unfill bpath.s;
+    drawboxed(s);
+  endfor
+enddef;
+
 boxjoin(a.c=b.c+(0,23));
 rboxit.a1(btex begin etex);
 boxit.a2(btex prepare etex);
@@ -35,8 +44,9 @@ for i:=1 upto 6:
   %if i = 3:
   %  drawunboxed(a[i])
   %else:
-  drawboxed(a[i])
+  %  drawboxed(a[i])
   %fi
+  drawshadowed(a[i]); % Note: need to add ';' here, otherwise will signal an error
 endfor
 
 %draw a3.e -- a3.n -- a3.w -- a3.s -- cycle;
