@@ -1,4 +1,5 @@
 input boxes
+input rboxes
 
 beginfig(23);
 %
@@ -67,14 +68,14 @@ vardef cluster(expr out)(expr s)(text sub) =
   picture whole, prev;
   prev := currentpicture;
   currentpicture := nullpicture;
-  % boxjoin(a.ne = b.nw + (5, 0); a.se = b.nw + (5, 0));
-  boxjoin(a.ne=b.nw; a.se=b.sw);
+  boxjoin(a.ne + (5, 0) = b.nw; a.se + (5, 0) = b.sw);
+  % boxjoin(a.ne=b.nw; a.se=b.sw);
   boolean isfirst;
   isfirst := true;
   forsuffixes $ = sub:
     string txt;
     txt := str $;
-    boxit$(txt);
+    rboxit$(txt);
     if isfirst:
       $.c = s;
       isfirst := false;

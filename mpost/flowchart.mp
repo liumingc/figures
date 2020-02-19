@@ -1,4 +1,5 @@
 input boxes
+input rboxes
 
 beginfig(1);
 
@@ -11,23 +12,25 @@ vardef diadmondit@#(text tt) =
   endbox_(clearc_,@#)
 enddef;
 
-boxjoin(a.se=b.ne+(0,12); a.sw=b.nw+(0,12));
-%circleit.a1(btex begin etex);
-boxit.a1(btex begin etex);
+%boxjoin(a.se=b.ne+(0,12); a.sw=b.nw+(0,12));
+boxjoin(a.c=b.c+(0,23));
+rboxit.a1(btex begin etex);
+%boxit.a1(btex begin etex);
 boxit.a2(btex prepare etex);
-%diadmondit.a3(btex ready? etex);
-boxit.a3(btex ready? etex);
+diadmondit.a3(btex ready? etex);
+%boxit.a3(btex ready? etex);
 boxit.a4(btex then part etex);
-%circleit.a5(btex end etex);
-boxit.a5(btex end etex);
+rboxit.a5(btex end etex);
+%boxit.a5(btex end etex);
 
 % 
-boxjoin(a.ne+(20, 0)=b.nw; a.se+(20, 0)=b.sw);
+%boxjoin(a.ne+(20, 0)=b.nw; a.se+(20, 0)=b.sw);
+boxjoin(a.c+(30, 0)=b.c);
 boxit.a6(btex else-part etex);
 a6.nw = a4.ne + (20, 0);
 a6.sw = a4.se + (20, 0);
 
-a4.dx = 20bp;
+a4.dx = 12bp;
 for i:=1 upto 6:
   if i = 3:
     drawunboxed(a[i])
