@@ -12,16 +12,16 @@ vardef diadmondit@#(text tt) =
   endbox_(clearc_,@#)
 enddef;
 
-%boxjoin(a.se=b.ne+(0,12); a.sw=b.nw+(0,12));
+def diadpath_(suffix $) =
+  $.e -- $.n -- $.w -- $.s -- cycle
+enddef;
+
 boxjoin(a.c=b.c+(0,23));
 rboxit.a1(btex begin etex);
-%boxit.a1(btex begin etex);
 boxit.a2(btex prepare etex);
 diadmondit.a3(btex ready? etex);
-%boxit.a3(btex ready? etex);
 boxit.a4(btex then part etex);
 rboxit.a5(btex end etex);
-%boxit.a5(btex end etex);
 
 % 
 %boxjoin(a.ne+(20, 0)=b.nw; a.se+(20, 0)=b.sw);
@@ -32,14 +32,14 @@ a6.sw = a4.se + (20, 0);
 
 a4.dx = 12bp;
 for i:=1 upto 6:
-  if i = 3:
-    drawunboxed(a[i])
-  else:
-    drawboxed(a[i])
-  fi
+  %if i = 3:
+  %  drawunboxed(a[i])
+  %else:
+  drawboxed(a[i])
+  %fi
 endfor
 
-draw a3.e -- a3.n -- a3.w -- a3.s -- cycle;
+%draw a3.e -- a3.n -- a3.w -- a3.s -- cycle;
 
 for i:=1 upto 4:
   drawarrow a[i].s -- a[i+1].n;
